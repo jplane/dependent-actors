@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "{instanceId}",
+      "methods": ["get"]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "whatever",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ]
+}
