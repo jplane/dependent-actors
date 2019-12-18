@@ -20,7 +20,9 @@ module.exports = df.entity(function(context) {
 });
 
 function onDatasetEvent(state, input) {
-
+    // add new satisifed dependency
+    // check if all dependencies satisified
+    // if yes, then publish "program dependencies satisified" event
 }
 
 function onTimerEvent(state, input) {

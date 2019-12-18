@@ -1,0 +1,14 @@
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "evt",
+      "direction": "in"
+    },
+    {
+      "name": "whatever",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ]
+}
