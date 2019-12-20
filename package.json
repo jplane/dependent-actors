@@ -6,7 +6,8 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "azure-storage": "^2.10.2",
+    "azure-eventgrid": "^1.6.0",
+    "ms-rest-azure": "^3.0.0",
     "durable-functions": "^1.2.3"
   },
   "devDependencies": {}
