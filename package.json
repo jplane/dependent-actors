@@ -6,8 +6,9 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "azure-eventgrid": "^1.6.0",
-    "ms-rest-azure": "^3.0.0",
+    "moment": "^2.24.0",
+    "@azure/eventgrid": "^2.0.0",
+    "@azure/ms-rest-js": "^2.0.4",
     "durable-functions": "^1.2.3"
   },
   "devDependencies": {}

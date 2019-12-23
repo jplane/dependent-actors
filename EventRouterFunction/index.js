@@ -1,5 +1,6 @@
 ﻿const df = require("durable-functions");
 const d2pMap = require("../ProgramDependencyMapping").d2pMap;
+const p2dMap = require("../ProgramDependencyMapping").p2dMap; 
 
 module.exports = async function (context, req) {
 
@@ -14,6 +15,21 @@ module.exports = async function (context, req) {
             case "Microsoft.Storage.BlobCreated":
                 await signalFileDependencyActor(evt, actorProxy);
                 break;
+            case "Kroger.DDR.Heartbeat":
+                await signalHeartbeat(evt, actorProxy);
+                break;
+            case "Kroger.DDR.ManualInvokeProgram":
+                await signalManualInvoke(evt, actorProxy);
+                break;
+            case "Kroger.DDR.ResetProgram":
+                await signalReset(evt, actorProxy);
+                break;
+            case "Kroger.DDR.EnableProgram":
+                await signalEnableDisable(evt, actorProxy, true);
+                break;
+            case "Kroger.DDR.DisableProgram":
+                await signalEnableDisable(evt, actorProxy, false);
+                break;
         }
     });
 
@@ -25,6 +41,33 @@ function handleEventGridSubscriptionValidation(context, evt) {
     context.res = { status: 200, body: { "ValidationResponse": code } };
 }
 
+async function signalEnableDisable(evt, actorProxy, enable) {
+    await signalProgram(evt.data.program,
+                        enable ? "enable" : "disable",
+                        { "timestamp": evt.eventTime },
+                        actorProxy);
+}
+
+async function signalManualInvoke(evt, actorProxy) {
+    await signalProgram(evt.data.program, "manualInvoke", { "timestamp": evt.eventTime }, actorProxy);
+}
+
+async function signalReset(evt, actorProxy) {
+    await signalProgram(evt.data.program, "reset", { "timestamp": evt.eventTime }, actorProxy);
+}
+
+async function signalProgram(program, operation, arg, actorProxy) {
+    const programEntityId = new df.EntityId("ProgramActor", program);
+    await actorProxy.signalEntity(programEntityId, operation, arg);
+}
+
+async function signalHeartbeat(evt, actorProxy) {
+    p2dMap.forEach(async item => {
+        const programEntityId = new df.EntityId("ProgramActor", item.program);
+        await actorProxy.signalEntity(programEntityId, "heartbeatEvent", evt);
+    });
+}
+
 async function signalFileDependencyActor(evt, actorProxy) {
 
     const evtUrl = evt.data.url;
@@ -33,7 +76,8 @@ async function signalFileDependencyActor(evt, actorProxy) {
                                       evtUrl.endsWith(item.dependency.key));
 
     if (!actor) {
-        throw "No registered dependency found for this file event."
+        console.error("No registered dependency found for this file event.");
+        return;
     }
 
     const id = toBase64(actor.dependency.type + ":" + actor.dependency.key);

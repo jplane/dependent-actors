@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "PROGRAM_TOPIC_KEY": "",
+    "PROGRAM_TOPIC_ENDPOINT": "",
+    "HEARTBEAT_TOPIC_KEY": "",
+    "HEARTBEAT_TOPIC_ENDPOINT": ""
+  }
+}

@@ -2,6 +2,7 @@
 exports.p2dMap = [
     {
         "program": "Program1",
+        "waitInterval": "day",  /* hour, day, week, none */
         "dependencies": [
             {
                 "type": "file",
@@ -15,6 +16,7 @@ exports.p2dMap = [
     },
     {
         "program": "Program2",
+        "waitInterval": "day",  /* hour, day, week, none */
         "dependencies": [
             {
                 "type": "file",

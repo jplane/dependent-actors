@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "4147ac27-a75a-4f02-92d3-ee11b510e7f0",
+		"name": "DDR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ResetProgram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.ResetProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HeartbeatEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.Heartbeat\",\n\t\t\"eventTime\": \"2019-12-22T23:12:00\"\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Microsoft.Storage.BlobCreated\",\n\t\t\"eventTime\": \"2019-12-22T23:14:00\",\n\t\t\"data\": {\n\t\t\t\"url\": \"http://foobar/foo/bar/input1.csv\"\n\t\t}\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ManualInvokeProgram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.ManualInvokeProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EnableProgram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.EnableProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DisableProgram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.DisableProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"EventRouterFunction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
