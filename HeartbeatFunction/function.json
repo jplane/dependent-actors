@@ -1,8 +1,8 @@
 {
-  "disabled": true,
+  "disabled": false,
   "bindings": [
     {
-      "schedule": "0 */30 * * * *",
+      "schedule": "*/30 * * * * *",
       "name": "theTimer",
       "type": "timerTrigger",
       "direction": "in"
