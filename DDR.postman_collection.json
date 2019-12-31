@@ -8,14 +8,10 @@
 		{
 			"name": "ResetProgram",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.ResetProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
-				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/commands/program/PROGRAM-NAME/reset",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -23,7 +19,10 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"commands",
+						"program",
+						"PROGRAM-NAME",
+						"reset"
 					]
 				}
 			},
@@ -36,10 +35,10 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.Heartbeat\",\n\t\t\"eventTime\": \"2019-12-22T23:12:00\"\n\t}\n]"
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.Heartbeat\",\n\t\t\"eventTime\": \"2019-12-23T19:57:00\"\n\t}\n]"
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/events",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -47,7 +46,7 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"events"
 					]
 				}
 			},
@@ -60,10 +59,10 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Microsoft.Storage.BlobCreated\",\n\t\t\"eventTime\": \"2019-12-22T23:14:00\",\n\t\t\"data\": {\n\t\t\t\"url\": \"http://foobar/foo/bar/input1.csv\"\n\t\t}\n\t}\n]"
+					"raw": "[\n\t{\n\t\t\"eventType\": \"Microsoft.Storage.BlobCreated\",\n\t\t\"eventTime\": \"2019-12-23T19:59:00\",\n\t\t\"data\": {\n\t\t\t\"url\": \"http://foobar/foo/bar/input3.csv\"\n\t\t}\n\t}\n]"
 				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/events",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -71,7 +70,7 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"events"
 					]
 				}
 			},
@@ -80,14 +79,10 @@
 		{
 			"name": "ManualInvokeProgram",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.ManualInvokeProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
-				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/commands/program/PROGRAM-NAME/invoke",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -95,7 +90,10 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"commands",
+						"program",
+						"PROGRAM-NAME",
+						"invoke"
 					]
 				}
 			},
@@ -104,14 +102,10 @@
 		{
 			"name": "EnableProgram",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.EnableProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
-				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/commands/program/PROGRAM-NAME/enable",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +113,10 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"commands",
+						"program",
+						"PROGRAM-NAME",
+						"enable"
 					]
 				}
 			},
@@ -128,14 +125,10 @@
 		{
 			"name": "DisableProgram",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"eventType\": \"Kroger.DDR.DisableProgram\",\n\t\t\"eventTime\": \"2019-12-23T19:52:00\",\n\t\t\"data\": {\n\t\t\t\"program\": \"Program2\"\n\t\t}\n\t}\n]"
-				},
 				"url": {
-					"raw": "http://localhost:7071/api/EventRouterFunction",
+					"raw": "http://localhost:7071/api/commands/program/PROGRAM-NAME/disable",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -143,7 +136,33 @@
 					"port": "7071",
 					"path": [
 						"api",
-						"EventRouterFunction"
+						"commands",
+						"program",
+						"PROGRAM-NAME",
+						"disable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryProgramState",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/queries/program/PROGRAM-NAME/state",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"queries",
+						"program",
+						"PROGRAM-NAME",
+						"state"
 					]
 				}
 			},

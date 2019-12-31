@@ -30,4 +30,5 @@ Individual programs are represented as actors that keep track of their own state
     - **ManualInvokeProgram**: immediately causes the target program to fire its "dependencies satisfied" event (regardless of its current state) and then resets its state to default
     - **EnableProgram**: ensures the 'enabled' flag for a given program is set to True
     - **DisableProgram**: ensures the 'enabled' flag for a given program is set to False
+    - **QueryProgramState**: returns the dependency state for a program
 1. DEBUGGING TIP: [View events](https://docs.microsoft.com/en-us/azure/storage/queues/storage-quickstart-queues-portal#view-message-properties) emitted for programs with satisfied dependencies in the queue created in the first step above

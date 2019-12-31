@@ -40,7 +40,7 @@ function onFileEvent(context, evt) {
     evt = {
         "type": type,
         "key": key,
-        "timestamp": evt.eventTime
+        "eventTime": evt.eventTime
     };
 
     programs.forEach(program => {

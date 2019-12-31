@@ -25,7 +25,7 @@ module.exports = async function (context) {
 
         await axios({
             method: "post",
-            url: "http://localhost:7071/api/EventRouterFunction",
+            url: "http://localhost:7071/api/events",
             data: events
         });
 

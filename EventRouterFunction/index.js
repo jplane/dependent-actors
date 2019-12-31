@@ -18,47 +18,13 @@ module.exports = async function (context, req) {
             case "Kroger.DDR.Heartbeat":
                 await signalHeartbeat(evt, actorProxy);
                 break;
-            case "Kroger.DDR.ManualInvokeProgram":
-                await signalManualInvoke(evt, actorProxy);
-                break;
-            case "Kroger.DDR.ResetProgram":
-                await signalReset(evt, actorProxy);
-                break;
-            case "Kroger.DDR.EnableProgram":
-                await signalEnableDisable(evt, actorProxy, true);
-                break;
-            case "Kroger.DDR.DisableProgram":
-                await signalEnableDisable(evt, actorProxy, false);
-                break;
         }
     });
-
-    context.done();
 };
 
 function handleEventGridSubscriptionValidation(context, evt) {
     var code = evt.data.validationCode;
     context.res = { status: 200, body: { "ValidationResponse": code } };
-}
-
-async function signalEnableDisable(evt, actorProxy, enable) {
-    await signalProgram(evt.data.program,
-                        enable ? "enable" : "disable",
-                        { "timestamp": evt.eventTime },
-                        actorProxy);
-}
-
-async function signalManualInvoke(evt, actorProxy) {
-    await signalProgram(evt.data.program, "manualInvoke", { "timestamp": evt.eventTime }, actorProxy);
-}
-
-async function signalReset(evt, actorProxy) {
-    await signalProgram(evt.data.program, "reset", { "timestamp": evt.eventTime }, actorProxy);
-}
-
-async function signalProgram(program, operation, arg, actorProxy) {
-    const programEntityId = new df.EntityId("ProgramActor", program);
-    await actorProxy.signalEntity(programEntityId, operation, arg);
 }
 
 async function signalHeartbeat(evt, actorProxy) {

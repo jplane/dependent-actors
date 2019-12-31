@@ -4,8 +4,8 @@
       "type": "httpTrigger",
       "name": "req",
       "direction": "in",
-      "methods": [ "post" ],
-      "route": "events"
+      "methods": [ "get" ],
+        "route": "queries/{category}/{target}/{query}"
     },
     {
       "type": "http",
