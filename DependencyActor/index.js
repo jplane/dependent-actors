@@ -1,5 +1,5 @@
 ﻿const df = require("durable-functions");
-const d2pMap = require("../ProgramDependencyMapping").d2pMap;
+const d2pMap = (require("../ProgramDependencyMapping").d2pMap)();
 
 module.exports = df.entity(function(context) {
 

@@ -1,5 +1,5 @@
 
-exports.p2dMap = [
+const p2dMap = [
     {
         "program": "Program1",
         "waitInterval": "day",  /* hour, day, week, none */
@@ -30,33 +30,33 @@ exports.p2dMap = [
     }
 ];
 
-exports.d2pMap = [
-    {
-        "dependency": {
-            "type": "file",
-            "key": "/foo/bar/input1.csv"
-        },
-        "programs": [
-            "Program1"
-        ]
-    },
-    {
-        "dependency": {
-            "type": "file",
-            "key": "/foo/bar/input2.csv"
-        },
-        "programs": [
-            "Program1",
-            "Program2"
-        ]
-    },
-    {
-        "dependency": {
-            "type": "file",
-            "key": "/foo/bar/input3.csv"
-        },
-        "programs": [
-            "Program2"
-        ]
-    }
-];
+exports.p2dMap = p2dMap;
+
+exports.d2pMap = () => {
+
+    const flattened = p2dMap.flatMap(progItem => progItem.dependencies.map(dep => {
+        return {
+            dep: dep,
+            program: progItem.program
+        };
+    }));
+    
+    const grouped = groupBy(flattened, el => el.dep.type + ":" + el.dep.key);
+
+    return grouped.map(g => {
+        return { dependency: g.dependency, programs: g.programs };
+    });
+}
+
+function groupBy(arr, keyFunc) {
+    return arr.reduce(function (accum, curr) {
+        const k = keyFunc(curr);
+        let existing = accum.find(el => el && el.key === k);
+        if (existing) {
+            existing.programs.push(curr.program);
+        } else {
+            accum.push({ key: k, dependency: curr.dep, programs: [curr.program] }); 
+        }
+        return accum; 
+    }, []);
+}

@@ -1,6 +1,6 @@
 ﻿const df = require("durable-functions");
-const d2pMap = require("../ProgramDependencyMapping").d2pMap;
 const p2dMap = require("../ProgramDependencyMapping").p2dMap; 
+const d2pMap = (require("../ProgramDependencyMapping").d2pMap)();
 
 module.exports = async function (context, req) {
 
