@@ -12,7 +12,7 @@ Individual programs are represented as actors that keep track of their own state
 - [.NET Core 2.x SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2) (note this is only for the Az Funcs Core Tools... no application code is written in .NET)
 - Install the durable functions binding extension:
 
-    `func extension install --package Microsoft.Azure.WebJobs.Extensions.DurableTask --version 2.1.0`
+    `func extensions install --package Microsoft.Azure.WebJobs.Extensions.DurableTask --version 2.1.0`
 
 - [VS Code Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - [Node.js](https://nodejs.org/en/)
